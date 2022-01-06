@@ -2,6 +2,8 @@
 #include <iostream>
 #include <memory.h>
 
+NAMESPACE(w3d)
+
 W3D_ChunkHeader::W3D_ChunkHeader(BinaryReader* stream)
     : _subChunks(false)
     , _size(0)
@@ -469,3 +471,5 @@ void W3D_Mesh::print() const
 {
 
 }
+
+NAMESPACE_END

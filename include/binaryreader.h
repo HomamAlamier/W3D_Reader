@@ -26,7 +26,7 @@ public:
     void close() override;
     size_t read(char *buffer, size_t size) override;
     size_t seekFromCurrent(size_t count) override;
-    bool eof() override { return !_fstream || _fstream->eof(); }
+    bool eof() override { return !_fstream || !_fstream->good() || _fstream->eof(); }
 private:
     std::fstream* _fstream;
 };

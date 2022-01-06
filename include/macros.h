@@ -2,6 +2,13 @@
 #define MACROS_H
 
 #include <utils.h>
+#ifdef __cplusplus
+    #define NAMESPACE(X) namespace X {
+    #define NAMESPACE_END }
+#else
+    #define NAMESPACE(X)
+    #define NAMESPACE_END
+#endif
 
 #define READ_PROP(NAME, TYPE) \
     public: \

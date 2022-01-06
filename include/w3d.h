@@ -6,6 +6,8 @@
 #include <macros.h>
 
 
+NAMESPACE(w3d)
+
 #define W3D_NAME_STRING_SIZE 16
 
 class W3D_VertexInfluence
@@ -562,5 +564,7 @@ public:
     W3D_Mesh(W3D_ChunkHeader* header, BinaryReader* reader);
     void print() const override;
 };
+
+NAMESPACE_END
 
 #endif // W3D_H

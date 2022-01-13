@@ -8,6 +8,7 @@
 #include <glm/vec4.hpp>
 #include <glm/mat4x4.hpp>
 #include <glm/gtc/type_ptr.hpp>
+#include <vector>
 class ReadStream
 {
 public:
@@ -93,6 +94,16 @@ public:
         vec = glm::make_vec4(tmp);
         return r;
     }
+    template<typename T>
+    size_t readVector(std::vector<T>& v, size_t s)
+    {
+        T* a = new T[s];
+        size_t r = read(a, s * sizeof(T));
+        for(size_t i = 0; i < s; ++i)
+            v.push_back(a[i]);
+        return r;
+    }
+    size_t readQuat(glm::quat&);
     glm::mat4 readMat4();
     void close();
     size_t seekFromCurrent(size_t count);

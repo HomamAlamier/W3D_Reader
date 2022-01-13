@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.14)
+cmake_minimum_required(VERSION 3.15)
 
 project(w3d_reader LANGUAGES CXX)
 
@@ -10,3 +10,7 @@ include_directories("include")
 file(GLOB SRC_DIR "src/*.cpp")
 file(GLOB INCLUDE_DIR "include/*.h" "include/*/*.hpp" "include/*/*.h")
 add_library(w3d_reader ${SRC_DIR} ${INCLUDE_DIR})
+if (WIN32)
+    set_property(TARGET w3d_reader PROPERTY
+      MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
+endif(WIN32)

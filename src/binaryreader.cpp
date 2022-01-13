@@ -22,7 +22,13 @@ void BinaryReader::close()
 {
     _stream->close();
 }
-
+size_t BinaryReader::readQuat(glm::quat& q)
+{
+    float tmp[4];
+    size_t r = read(tmp, sizeof(float) * 4);
+    q = glm::make_quat(tmp);
+    return r;
+}
 glm::mat4 BinaryReader::readMat4()
 {
     float tmp[16] = { 0.f };

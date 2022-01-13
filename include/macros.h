@@ -16,11 +16,6 @@
     private: \
     TYPE _##NAME;
 
-#define READ_PROP_PTR(NAME, TYPE) \
-    public: \
-    const TYPE* NAME() const { return _##NAME; } \
-    private: \
-    TYPE* _##NAME;
 
 #define READ_PROP_REF(NAME, TYPE) \
     public: \
@@ -52,6 +47,7 @@
 #define BVEC3(X) reader->readVec3(_##X);
 #define BVEC4(X) reader->readVec4(_##X);
 #define BCLASS(X, T) _##X = T(reader);
+#define BVECTOR(X, S) reader->readVector(_##X, S);
 
 #define AUTO_BINARY_CTOR_START(X) \
     public: \
